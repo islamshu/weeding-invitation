@@ -67,6 +67,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Font catalogue
+    |--------------------------------------------------------------------------
+    | Keep this list in sync with resources/js/data/fonts.js.
+    */
+    'font_families' => [
+        'auto',
+        'cairo', 'tajawal', 'naskh', 'amiri', 'scheherazade', 'aref_ruqaa',
+        'reem_kufi', 'noto_kufi', 'el_messiri', 'almarai', 'markazi', 'changa',
+        'alexandria', 'lalezar', 'rakkas', 'jomhuria',
+        'playfair', 'cormorant', 'montserrat',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Envelope catalogue
     |--------------------------------------------------------------------------
     | Keep this list in sync with resources/js/data/envelopeStyles.js.

@@ -217,6 +217,8 @@ function confirmDelete() {
                                     :template="getTemplate(invitation.template_key)"
                                     :groom="invitation.groom_name_ar"
                                     :bride="invitation.bride_name_ar"
+                                    :groom-wakil="invitation.groom_wakil?.name_ar"
+                                    :bride-wakil="invitation.bride_wakil?.name_ar"
                                     :lang="locale"
                                     rounded="rounded-none"
                                 />

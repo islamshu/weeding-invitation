@@ -1,13 +1,7 @@
 import { getTemplate, templates } from '../data/templates';
+import { FONT_STACKS } from '../data/fonts';
 
-export const FONT_STACKS = {
-    cairo: { ar: "'Cairo', sans-serif", en: "'Cairo', sans-serif" },
-    tajawal: { ar: "'Tajawal', sans-serif", en: "'Tajawal', sans-serif" },
-    naskh: { ar: "'Noto Naskh Arabic', serif", en: "'Noto Naskh Arabic', serif" },
-    playfair: { ar: "'Noto Naskh Arabic', serif", en: "'Playfair Display', serif" },
-    cormorant: { ar: "'Noto Naskh Arabic', serif", en: "'Cormorant Garamond', serif" },
-    montserrat: { ar: "'Tajawal', sans-serif", en: "'Montserrat', sans-serif" },
-};
+export { FONT_STACKS } from '../data/fonts';
 
 export const designPresets = [
     {

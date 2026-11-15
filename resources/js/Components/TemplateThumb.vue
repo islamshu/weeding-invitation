@@ -7,6 +7,8 @@ const props = defineProps({
     template: { type: Object, required: true },
     groom: { type: String, default: 'أحمد' },
     bride: { type: String, default: 'سارة' },
+    groomWakil: { type: String, default: '' },
+    brideWakil: { type: String, default: '' },
     lang: { type: String, default: 'ar' },
     rounded: { type: String, default: 'rounded-2xl' },
     showName: { type: Boolean, default: true },
@@ -28,7 +30,7 @@ const icons = {
 };
 
 const ornament = computed(() => icons[props.template?.ornament] ?? Crown);
-const initials = computed(() => monogram(props.groom, props.bride, props.lang));
+const initials = computed(() => monogram(props.groomWakil || props.groom, props.brideWakil || props.bride, props.lang));
 const fontFamily = computed(() => (props.template?.fonts?.ar === 'naskh' ? "'Noto Naskh Arabic', serif" : "'Cairo', sans-serif"));
 const dark = computed(() => {
     const hex = (props.template?.palette?.background ?? '#fff').replace('#', '');

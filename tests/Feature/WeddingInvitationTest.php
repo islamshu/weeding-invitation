@@ -267,4 +267,34 @@ class WeddingInvitationTest extends TestCase
 
         $this->assertDatabaseCount('wedding_invitations', 0);
     }
+
+    public function test_every_catalogue_font_is_accepted_and_persisted(): void
+    {
+        $user = User::factory()->create();
+
+        foreach (config('invitations.font_families') as $font) {
+            $this->actingAs($user)->post('/invitations', $this->payload([
+                'groom_name_ar' => 'محمد '.$font,
+                'bride_name_ar' => 'سارة '.$font,
+                'design_settings' => [
+                    'font_family' => $font,
+                ],
+            ]))->assertSessionHasNoErrors();
+        }
+
+        $this->assertDatabaseCount('wedding_invitations', count(config('invitations.font_families')));
+    }
+
+    public function test_unknown_fonts_are_rejected(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->post('/invitations', $this->payload([
+            'design_settings' => [
+                'font_family' => 'comic-sans-arabic',
+            ],
+        ]))->assertSessionHasErrors('design_settings.font_family');
+
+        $this->assertDatabaseCount('wedding_invitations', 0);
+    }
 }

@@ -136,7 +136,7 @@ class SaveWeddingInvitationRequest extends FormRequest
             'design_settings.background_color' => ['nullable', 'regex:/^#[0-9a-fA-F]{6}$/'],
             'design_settings.text_color' => ['nullable', 'regex:/^#[0-9a-fA-F]{6}$/'],
             'design_settings.decorative_color' => ['nullable', 'regex:/^#[0-9a-fA-F]{6}$/'],
-            'design_settings.font_family' => ['nullable', Rule::in(['auto', 'cairo', 'tajawal', 'naskh', 'playfair', 'cormorant', 'montserrat'])],
+            'design_settings.font_family' => ['nullable', Rule::in(config('invitations.font_families', []))],
             'design_settings.background_style' => ['nullable', Rule::in(['soft', 'plain', 'paper', 'texture', 'image'])],
             'design_settings.border_style' => ['nullable', Rule::in(['ornate', 'thin', 'double', 'none'])],
             'design_settings.envelope_style' => ['nullable', Rule::in(config('invitations.envelope_styles', []))],

@@ -7,6 +7,7 @@ import { toast } from '../../utils/toast';
 import BaseSelect from '../BaseSelect.vue';
 import ToggleSwitch from '../ToggleSwitch.vue';
 import EnvelopeStylePicker from './EnvelopeStylePicker.vue';
+import FontPicker from './FontPicker.vue';
 
 const props = defineProps({
     design: { type: Object, required: true },
@@ -40,16 +41,6 @@ const colors = computed(() => [
     { key: 'background_color', label: t('design.background') },
     { key: 'text_color', label: t('design.text') },
     { key: 'decorative_color', label: t('design.decorative') },
-]);
-
-const fontOptions = computed(() => [
-    { value: 'auto', label: t('design.font.auto') },
-    { value: 'cairo', label: t('design.font.cairo') },
-    { value: 'tajawal', label: t('design.font.tajawal') },
-    { value: 'naskh', label: t('design.font.naskh') },
-    { value: 'playfair', label: t('design.font.playfair') },
-    { value: 'cormorant', label: t('design.font.cormorant') },
-    { value: 'montserrat', label: t('design.font.montserrat') },
 ]);
 
 const backgroundOptions = computed(() => [
@@ -193,7 +184,11 @@ function removeImage(field) {
         <!-- Typography & composition -->
         <section class="rounded-2xl border border-champagne-200 bg-white/60 p-4">
             <div class="grid gap-3.5 sm:grid-cols-2">
-                <BaseSelect v-model="design.font_family" :label="t('design.font')" :options="fontOptions" :hint="t('design.fontHint')" />
+                <FontPicker
+                    v-model="design.font_family"
+                    class="sm:col-span-2"
+                    :sample="[form.groom_name_ar, form.bride_name_ar].filter(Boolean).join(' و ')"
+                />
                 <BaseSelect v-model="design.background_style" :label="t('design.backgroundStyle')" :options="backgroundOptions" />
                 <BaseSelect v-model="design.border_style" :label="t('design.border')" :options="borderOptions" />
                 <BaseSelect v-model="design.couple_layout" :label="t('design.coupleLayout')" :options="layoutOptions" :hint="t('design.layoutHint')" />
